@@ -48,6 +48,7 @@ const App = ({ signOut }) => {
     const data = {
       name: form.get("name"),
       description: form.get("description"),
+      price: form.get("price"),
       image: image.name,
     };
     if (!!data.image) await Storage.put(data.name, image);
@@ -73,21 +74,29 @@ const App = ({ signOut }) => {
 
   return (
     <View className="App">
-      <Heading level={1}>My Notes App</Heading>
+      <Heading level={1}>FoodItem</Heading>
       <View as="form" margin="3rem 0" onSubmit={createNote}>
         <Flex direction="row" justifyContent="center">
           <TextField
             name="name"
-            placeholder="Note Name"
-            label="Note Name"
+            placeholder="Name"
+            label="Name"
             labelHidden
             variation="quiet"
             required
           />
           <TextField
             name="description"
-            placeholder="Note Description"
-            label="Note Description"
+            placeholder="Description"
+            label="Description"
+            labelHidden
+            variation="quiet"
+            required
+          />
+           <TextField
+            name="price"
+            placeholder="Price"
+            label="Price"
             labelHidden
             variation="quiet"
             required
@@ -99,11 +108,11 @@ const App = ({ signOut }) => {
   style={{ alignSelf: "end" }}
 />
           <Button type="submit" variation="primary">
-            Create Note
+            Add Item
           </Button>
         </Flex>
       </View>
-      <Heading level={2}>Current Notes</Heading>
+      <Heading level={2}>Current Items</Heading>
       <View margin="3rem 0">
       {notes.map((note) => (
   <Flex
@@ -116,6 +125,7 @@ const App = ({ signOut }) => {
       {note.name}
     </Text>
     <Text as="span">{note.description}</Text>
+    <Text as="span">{note.price}</Text>
     {note.image && (
       <Image
         src={note.image}
@@ -124,7 +134,7 @@ const App = ({ signOut }) => {
       />
     )}
     <Button variation="link" onClick={() => deleteNote(note)}>
-      Delete note
+      Delete Item
     </Button>
   </Flex>
 ))}
