@@ -121,7 +121,7 @@ const App = ({ signOut }) => {
     justifyContent="center"
     alignItems="center"
   >
-    <Text as="strong" fontWeight={700}>
+    <Text as="strong" fontWeight={600}>
       {note.name}
     </Text>
     <Text as="span">{note.description}</Text>
@@ -130,7 +130,7 @@ const App = ({ signOut }) => {
       <Image
         src={note.image}
         alt={`visual aid for ${notes.name}`}
-        style={{ width: 400 }}
+        style={{ width: 300 }}
       />
     )}
     <Button variation="link" onClick={() => deleteNote(note)}>
